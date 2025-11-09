@@ -774,7 +774,7 @@
     </div>
 
     <!-- Hidden Audio Element -->
-    <audio id="bgMusic" loop>
+    <audio id="bgMusic" loop autoplay>
         <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
         <source src="assets/audio/soundtrack.ogg" type="audio/ogg">
         Your browser does not support the audio element.
@@ -1045,17 +1045,35 @@
         // Set initial volume to 20%
         bgMusic.volume = 0.2;
 
-        // Auto-play music after loading screen
+        // Auto-play music immediately after page loads
         window.addEventListener('load', () => {
             setTimeout(() => {
-                // Try to play music (some browsers require user interaction)
-                bgMusic.play().catch(error => {
-                    console.log('Autoplay was prevented. Music will start on first user interaction.');
-                    // Add one-time click listener to start music
-                    document.body.addEventListener('click', () => {
-                        bgMusic.play();
-                    }, { once: true });
-                });
+                // Force play music
+                const playPromise = bgMusic.play();
+                
+                if (playPromise !== undefined) {
+                    playPromise.then(() => {
+                        // Autoplay started successfully
+                        console.log('🎵 Soundtrack playing at 20% volume');
+                    }).catch(error => {
+                        // Autoplay was prevented by browser
+                        console.log('Autoplay blocked. Click anywhere to start music.');
+                        // Try to play on ANY user interaction
+                        const startMusic = () => {
+                            bgMusic.play().then(() => {
+                                console.log('🎵 Music started!');
+                                // Remove all listeners after successful play
+                                document.removeEventListener('click', startMusic);
+                                document.removeEventListener('keydown', startMusic);
+                                document.removeEventListener('touchstart', startMusic);
+                            });
+                        };
+                        
+                        document.addEventListener('click', startMusic, { once: true });
+                        document.addEventListener('keydown', startMusic, { once: true });
+                        document.addEventListener('touchstart', startMusic, { once: true });
+                    });
+                }
             }, 2000);
         });
 
