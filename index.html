@@ -565,6 +565,115 @@
             to { opacity: 1; }
         }
 
+        /* Audio Controls */
+        .audio-controls {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            background: rgba(10, 10, 10, 0.4);
+            border: 1px solid rgba(0, 255, 65, 0.4);
+            padding: 10px;
+            border-radius: 8px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s;
+        }
+
+        .audio-controls:hover {
+            background: rgba(10, 10, 10, 0.7);
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+        }
+
+        .audio-icon {
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            user-select: none;
+            color: var(--primary);
+            text-shadow: 0 0 5px var(--primary);
+        }
+
+        .audio-icon:hover {
+            transform: scale(1.15);
+        }
+
+        .audio-icon.muted {
+            color: #666;
+            text-shadow: none;
+        }
+
+        .volume-slider {
+            writing-mode: bt-lr;
+            -webkit-appearance: slider-vertical;
+            width: 6px;
+            height: 60px;
+            padding: 0;
+            margin: 0;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .volume-slider::-webkit-slider-runnable-track {
+            width: 6px;
+            height: 60px;
+            background: rgba(0, 255, 65, 0.15);
+            border: 1px solid rgba(0, 255, 65, 0.4);
+            border-radius: 3px;
+        }
+
+        .volume-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border: 1px solid var(--darker);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+        }
+
+        .volume-slider::-moz-range-track {
+            width: 6px;
+            height: 60px;
+            background: rgba(0, 255, 65, 0.15);
+            border: 1px solid rgba(0, 255, 65, 0.4);
+            border-radius: 3px;
+        }
+
+        .volume-slider::-moz-range-thumb {
+            width: 14px;
+            height: 14px;
+            background: var(--primary);
+            border: 1px solid var(--darker);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
+        }
+
+        .volume-percentage {
+            font-size: 10px;
+            color: var(--primary);
+            font-weight: bold;
+            min-width: 30px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        /* Pulse animation for audio icon */
+        @keyframes audioPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+
+        .audio-icon.playing {
+            animation: audioPulse 2s infinite;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 48px; }
@@ -576,6 +685,17 @@
             .lightbox-nav { width: 40px; height: 40px; font-size: 30px; }
             .lightbox-prev { left: 10px; }
             .lightbox-next { right: 10px; }
+            .audio-controls {
+                top: 70px;
+                right: 15px;
+                padding: 8px;
+            }
+            .volume-slider {
+                height: 50px;
+            }
+            .audio-icon {
+                font-size: 18px;
+            }
         }
 
         /* Particle System */
@@ -643,6 +763,22 @@
 
     <!-- Background Animation -->
     <div class="bg-animation" id="bgAnimation"></div>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <div class="audio-icon playing" id="audioIcon" title="Kliknij aby wyciszyć/włączyć">
+            🔊
+        </div>
+        <input type="range" min="0" max="100" value="20" class="volume-slider" id="volumeSlider" orient="vertical">
+        <div class="volume-percentage" id="volumePercentage">20%</div>
+    </div>
+
+    <!-- Hidden Audio Element -->
+    <audio id="bgMusic" loop>
+        <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
+        <source src="assets/audio/soundtrack.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
 
     <!-- Navigation -->
     <nav>
@@ -899,6 +1035,67 @@
     </footer>
 
     <script>
+        // Audio System
+        const bgMusic = document.getElementById('bgMusic');
+        const audioIcon = document.getElementById('audioIcon');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumePercentage = document.getElementById('volumePercentage');
+        let isMuted = false;
+
+        // Set initial volume to 20%
+        bgMusic.volume = 0.2;
+
+        // Auto-play music after loading screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                // Try to play music (some browsers require user interaction)
+                bgMusic.play().catch(error => {
+                    console.log('Autoplay was prevented. Music will start on first user interaction.');
+                    // Add one-time click listener to start music
+                    document.body.addEventListener('click', () => {
+                        bgMusic.play();
+                    }, { once: true });
+                });
+            }, 2000);
+        });
+
+        // Toggle mute/unmute
+        audioIcon.addEventListener('click', () => {
+            if (isMuted) {
+                bgMusic.muted = false;
+                audioIcon.textContent = '🔊';
+                audioIcon.classList.remove('muted');
+                audioIcon.classList.add('playing');
+                isMuted = false;
+            } else {
+                bgMusic.muted = true;
+                audioIcon.textContent = '🔇';
+                audioIcon.classList.add('muted');
+                audioIcon.classList.remove('playing');
+                isMuted = true;
+            }
+        });
+
+        // Volume slider control
+        volumeSlider.addEventListener('input', (e) => {
+            const volume = e.target.value;
+            bgMusic.volume = volume / 100;
+            volumePercentage.textContent = volume + '%';
+            
+            // Update icon based on volume
+            if (volume == 0) {
+                audioIcon.textContent = '🔇';
+                audioIcon.classList.add('muted');
+                audioIcon.classList.remove('playing');
+            } else {
+                audioIcon.textContent = '🔊';
+                audioIcon.classList.remove('muted');
+                if (!isMuted) {
+                    audioIcon.classList.add('playing');
+                }
+            }
+        });
+
         // Screenshot lightbox functionality
         let currentImageIndex = 0;
         const screenshots = document.querySelectorAll('.screenshot');
@@ -917,18 +1114,17 @@
             const screenshotNum = screenshots[index].getAttribute('data-screenshot');
             lightboxImg.src = `assets/screenshots/screenshot${screenshotNum}.png`;
             lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeLightbox() {
             lightbox.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Restore scrolling
+            document.body.style.overflow = 'auto';
         }
 
         function changeImage(direction) {
             currentImageIndex += direction;
             
-            // Loop around
             if (currentImageIndex >= screenshots.length) {
                 currentImageIndex = 0;
             } else if (currentImageIndex < 0) {
@@ -1098,6 +1294,7 @@
 
         console.log('%c>> WELCOME TO WOBLOBLOBLO GAME STUDIOS <<', 'color: #00ff41; font-size: 20px; font-weight: bold;');
         console.log('%cLooking for secrets? Try the Konami Code... 🎮', 'color: #ff0080; font-size: 14px;');
+        console.log('%c🎵 Soundtrack is playing at 20% volume. Use the audio controls to adjust!', 'color: #ffff00; font-size: 12px;');
     </script>
 </body>
 </html>
