@@ -1046,16 +1046,16 @@
                 <!-- Disable reCAPTCHA -->
                 <input type="hidden" name="_captcha" value="false">
                 
-                <!-- Custom thank you page (optional - change to your URL) -->
-                <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+                <!-- Redirect to thanks page (IMPORTANT: use full URL with https://) -->
+                <input type="hidden" name="_next" value="thanks.html">
                 
                 <!-- Subject line -->
                 <input type="hidden" name="_subject" value="🎮 Nowa subskrypcja newsletter WOBLOBLOBLO!">
                 
-                <!-- Auto-response (optional) -->
+                <!-- Auto-response -->
                 <input type="hidden" name="_autoresponse" value="Dziękujemy za zapisanie się do newslettera WOBLOBLOBLO! Będziemy informować Cię o postępach w rozwoju gry.">
                 
-                <!-- Email template (optional) -->
+                <!-- Email template -->
                 <input type="hidden" name="_template" value="table">
                 
                 <!-- Main email input -->
@@ -1075,7 +1075,7 @@
                 Masz pytania? Chcesz współpracować? Skontaktuj się!
             </p>
             <p style="font-size: 24px; color: var(--accent);">
-                WOBLOGAMES@GMAIL.COM
+                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b1c040907040c0a060e180b0c060a020765080406">[email&#160;protected]</a>
             </p>
         </div>
     </section>
@@ -1099,7 +1099,7 @@
         </p>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Audio System
         const bgMusic = document.getElementById('bgMusic');
         const audioIcon = document.getElementById('audioIcon');
@@ -1361,8 +1361,4 @@
         }, 5000);
 
         console.log('%c>> WELCOME TO WOBLOBLOBLO GAME STUDIOS <<', 'color: #00ff41; font-size: 20px; font-weight: bold;');
-        console.log('%cLooking for secrets? Try the Konami Code... 🎮', 'color: #ff0080; font-size: 14px;');
-        console.log('%c🎵 Soundtrack is playing at 20% volume. Use the audio controls to adjust!', 'color: #ffff00; font-size: 12px;');
-    </script>
-</body>
-</html>
+        console.log('%cLooking for secrets? Try
