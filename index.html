@@ -27,7 +27,6 @@
             cursor: crosshair;
         }
 
-        /* Animated Background */
         .bg-animation {
             position: fixed;
             top: 0;
@@ -43,7 +42,6 @@
             background: var(--primary);
         }
 
-        /* Glitch Effect */
         @keyframes glitch {
             0%, 100% { transform: translate(0); }
             20% { transform: translate(-2px, 2px); }
@@ -56,7 +54,6 @@
             animation: glitch 0.3s infinite;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -104,7 +101,6 @@
             width: 100%;
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -165,7 +161,11 @@
             left: 0;
         }
 
-        /* Sections */
+        .cta-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
         section {
             padding: 100px 20px;
             max-width: 1200px;
@@ -180,7 +180,6 @@
             text-shadow: 0 0 10px var(--secondary);
         }
 
-        /* Game Features */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -222,7 +221,6 @@
             color: rgba(0, 255, 65, 0.8);
         }
 
-        /* Screenshots Gallery */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -281,35 +279,6 @@
             opacity: 1;
         }
 
-        /* Video Section */
-        .video-container {
-            margin: 60px auto;
-            max-width: 900px;
-            border: 3px solid var(--primary);
-            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
-            position: relative;
-            background: var(--dark);
-        }
-
-        .video-container::before {
-            content: '▶ GAMEPLAY TRAILER';
-            position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 24px;
-            color: var(--accent);
-            text-shadow: 0 0 10px var(--accent);
-            font-weight: bold;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Lightbox Modal */
         .lightbox {
             display: none;
             position: fixed;
@@ -409,7 +378,33 @@
             right: 20px;
         }
 
-        /* Stats Counter */
+        .video-container {
+            margin: 60px auto;
+            max-width: 900px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            position: relative;
+            background: var(--dark);
+        }
+
+        .video-container::before {
+            content: '▶ GAMEPLAY TRAILER';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+            font-weight: bold;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         .stats {
             display: flex;
             justify-content: space-around;
@@ -435,7 +430,6 @@
             margin-top: 10px;
         }
 
-        /* Timeline */
         .timeline {
             position: relative;
             margin: 50px 0;
@@ -474,7 +468,6 @@
             margin-bottom: 10px;
         }
 
-        /* Team Section */
         .team {
             display: flex;
             justify-content: center;
@@ -507,7 +500,6 @@
             box-shadow: 0 0 30px var(--primary);
         }
 
-        /* Newsletter */
         .newsletter {
             background: rgba(255, 0, 128, 0.1);
             border: 2px solid var(--secondary);
@@ -536,7 +528,6 @@
             color: rgba(0, 255, 65, 0.5);
         }
 
-        /* Footer */
         footer {
             background: var(--darker);
             border-top: 2px solid var(--primary);
@@ -562,42 +553,6 @@
             transform: scale(1.2);
         }
 
-        /* Scroll Indicator */
-        .scroll-indicator {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 50px;
-            border: 2px solid var(--primary);
-            border-radius: 15px;
-            display: flex;
-            justify-content: center;
-            padding-top: 10px;
-            opacity: 0;
-            animation: fadeInScroll 2s 1s forwards;
-        }
-
-        .scroll-indicator::before {
-            content: '';
-            width: 6px;
-            height: 10px;
-            background: var(--primary);
-            border-radius: 3px;
-            animation: scroll 2s infinite;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(20px); opacity: 0; }
-        }
-
-        @keyframes fadeInScroll {
-            to { opacity: 1; }
-        }
-
-        /* Audio Controls */
         .audio-controls {
             position: fixed;
             top: 80px;
@@ -669,24 +624,6 @@
             box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
         }
 
-        .volume-slider::-moz-range-track {
-            width: 6px;
-            height: 60px;
-            background: rgba(0, 255, 65, 0.15);
-            border: 1px solid rgba(0, 255, 65, 0.4);
-            border-radius: 3px;
-        }
-
-        .volume-slider::-moz-range-thumb {
-            width: 14px;
-            height: 14px;
-            background: var(--primary);
-            border: 1px solid var(--darker);
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 0 8px rgba(0, 255, 65, 0.6);
-        }
-
         .volume-percentage {
             font-size: 10px;
             color: var(--primary);
@@ -696,7 +633,6 @@
             opacity: 0.8;
         }
 
-        /* Pulse animation for audio icon */
         @keyframes audioPulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.08); }
@@ -706,7 +642,6 @@
             animation: audioPulse 2s infinite;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 { font-size: 48px; }
             h2 { font-size: 36px; }
@@ -717,102 +652,23 @@
             .lightbox-nav { width: 40px; height: 40px; font-size: 30px; }
             .lightbox-prev { left: 10px; }
             .lightbox-next { right: 10px; }
-            .audio-controls {
-                top: 70px;
-                right: 15px;
-                padding: 8px;
-            }
-            .volume-slider {
-                height: 50px;
-            }
-            .audio-icon {
-                font-size: 18px;
-            }
-        }
-
-        /* Particle System */
-        .particle {
-            position: absolute;
-            background: var(--primary);
-            width: 2px;
-            height: 2px;
-            pointer-events: none;
-            animation: float 3s infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-100px) translateX(50px); }
-        }
-
-        /* Loading Screen */
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--darker);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s;
-        }
-
-        .loading-bar {
-            width: 300px;
-            height: 30px;
-            border: 2px solid var(--primary);
-            margin-top: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading-bar::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: var(--primary);
-            animation: load 2s forwards;
-        }
-
-        @keyframes load {
-            to { width: 100%; }
         }
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
-        <h1 style="font-size: 48px;">LOADING...</h1>
-        <div class="loading-bar"></div>
-    </div>
-
-    <!-- Background Animation -->
     <div class="bg-animation" id="bgAnimation"></div>
 
-    <!-- Audio Controls -->
     <div class="audio-controls">
-        <div class="audio-icon playing" id="audioIcon" title="Kliknij aby wyciszyć/włączyć">
-            🔊
-        </div>
+        <div class="audio-icon playing" id="audioIcon" title="Kliknij aby wyciszyć/włączyć">🔊</div>
         <input type="range" min="0" max="100" value="20" class="volume-slider" id="volumeSlider" orient="vertical">
         <div class="volume-percentage" id="volumePercentage">20%</div>
     </div>
 
-    <!-- Hidden Audio Element -->
-    <audio id="bgMusic" loop autoplay>
+    <audio id="bgMusic" loop>
         <source src="assets/audio/soundtrack.mp3" type="audio/mpeg">
         <source src="assets/audio/soundtrack.ogg" type="audio/ogg">
-        Your browser does not support the audio element.
     </audio>
 
-    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="#home">HOME</a></li>
@@ -825,20 +681,17 @@
         </ul>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <h1 class="glitch">WOBLOBLOBLO</h1>
         <p class="subtitle">GAME STUDIOS</p>
         <p style="font-size: 20px; margin-bottom: 40px; color: rgba(0,255,65,0.7);">
             >> BRINGING BACK THE GOLDEN AGE OF FPS 
         </p>
-        <button class="cta-button" onclick="scrollToSection('game')">
+        <button class="cta-button" onclick="document.getElementById('game').scrollIntoView({ behavior: 'smooth' })">
             ENTER THE BATTLE
         </button>
-        <div class="scroll-indicator"></div>
     </section>
 
-    <!-- Game Section -->
     <section id="game">
         <h2>THE GAME</h2>
         <div style="text-align: center; max-width: 800px; margin: 0 auto;">
@@ -870,7 +723,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features">
         <h2>CORE FEATURES</h2>
         <div class="features">
@@ -924,7 +776,6 @@
         </div>
     </section>
 
-    <!-- Media Section (Screenshots + Video) -->
     <section id="media">
         <h2>SCREENSHOTS</h2>
         <div class="gallery" id="gallery">
@@ -948,7 +799,6 @@
             </div>
         </div>
 
-        <!-- Video Section -->
         <div class="video-container">
             <video controls preload="metadata">
                 <source src="assets/videos/gameplay.mp4" type="video/mp4">
@@ -957,7 +807,6 @@
         </div>
     </section>
 
-    <!-- Lightbox Modal -->
     <div class="lightbox" id="lightbox">
         <div class="lightbox-content">
             <div class="lightbox-close" onclick="closeLightbox()">X</div>
@@ -967,7 +816,6 @@
         </div>
     </div>
 
-    <!-- Roadmap -->
     <section id="roadmap">
         <h2>DEVELOPMENT ROADMAP</h2>
         <div class="timeline">
@@ -1002,7 +850,6 @@
         </div>
     </section>
 
-    <!-- Team -->
     <section id="team">
         <h2>MEET THE TEAM</h2>
         <div class="team">
@@ -1010,14 +857,14 @@
                 <div class="avatar">U</div>
                 <h3>CHIEF DEVELOPER</h3>
                 <p style="color: rgba(0,255,65,0.7);">
-                    Osoba odpowiedzialna za engine, gameplay i architekturę gry,
+                    Osoba odpowiedzialna za engine, gameplay i architekturę gry
                 </p>
             </div>
             <div class="team-member">
                 <div class="avatar">F</div>
                 <h3>LEAD DESIGNER</h3>
                 <p style="color: rgba(0,255,65,0.7);">
-                    Twórca poziomów, enemy design i game balance,
+                    Twórca poziomów, enemy design i game balance
                 </p>
             </div>
             <div class="team-member">
@@ -1030,7 +877,6 @@
         </div>
     </section>
 
-    <!-- Newsletter -->
     <section>
         <div class="newsletter">
             <h2 style="margin-bottom: 20px;">JOIN THE HYPE TRAIN!</h2>
@@ -1038,36 +884,14 @@
                 Zapisz się na newsletter i bądź na bieżąco z rozwojem gry!
             </p>
             
-            <!-- FormSubmit Form -->
             <form action="https://formsubmit.co/woblogames@gmail.com" method="POST">
-                <!-- Honeypot for spam protection -->
-                <input type="text" name="_honey" style="display:none">
-                
-                <!-- Disable reCAPTCHA -->
                 <input type="hidden" name="_captcha" value="false">
-                
-                <!-- Redirect to thanks page (IMPORTANT: use full URL with https://) -->
-                <input type="hidden" name="_next" value="thanks.html">
-                
-                <!-- Subject line -->
-                <input type="hidden" name="_subject" value="🎮 Nowa subskrypcja newsletter WOBLOBLOBLO!">
-                
-                <!-- Auto-response -->
-                <input type="hidden" name="_autoresponse" value="Dziękujemy za zapisanie się do newslettera WOBLOBLOBLO! Będziemy informować Cię o postępach w rozwoju gry.">
-                
-                <!-- Email template -->
-                <input type="hidden" name="_template" value="table">
-                
-                <!-- Main email input -->
                 <input type="email" name="email" placeholder="your@email.com" required>
-                
-                <!-- Submit button -->
                 <button type="submit" class="cta-button">SUBSCRIBE</button>
             </form>
         </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
         <h2>GET IN TOUCH</h2>
         <div style="text-align: center;">
@@ -1075,12 +899,11 @@
                 Masz pytania? Chcesz współpracować? Skontaktuj się!
             </p>
             <p style="font-size: 24px; color: var(--accent);">
-                <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b1c040907040c0a060e180b0c060a020765080406">[email&#160;protected]</a>
+                WOBLOGAMES@GMAIL.COM
             </p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <h3 style="font-size: 36px; margin-bottom: 20px;">WOBLOBLOBLO GAME STUDIOS</h3>
         <div class="social-links">
@@ -1099,50 +922,20 @@
         </p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Audio System
+    <script>
         const bgMusic = document.getElementById('bgMusic');
         const audioIcon = document.getElementById('audioIcon');
         const volumeSlider = document.getElementById('volumeSlider');
         const volumePercentage = document.getElementById('volumePercentage');
         let isMuted = false;
 
-        // Set initial volume to 20%
         bgMusic.volume = 0.2;
 
-        // Auto-play music immediately after page loads
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                // Force play music
-                const playPromise = bgMusic.play();
-                
-                if (playPromise !== undefined) {
-                    playPromise.then(() => {
-                        // Autoplay started successfully
-                        console.log('🎵 Soundtrack playing at 20% volume');
-                    }).catch(error => {
-                        // Autoplay was prevented by browser
-                        console.log('Autoplay blocked. Click anywhere to start music.');
-                        // Try to play on ANY user interaction
-                        const startMusic = () => {
-                            bgMusic.play().then(() => {
-                                console.log('🎵 Music started!');
-                                // Remove all listeners after successful play
-                                document.removeEventListener('click', startMusic);
-                                document.removeEventListener('keydown', startMusic);
-                                document.removeEventListener('touchstart', startMusic);
-                            });
-                        };
-                        
-                        document.addEventListener('click', startMusic, { once: true });
-                        document.addEventListener('keydown', startMusic, { once: true });
-                        document.addEventListener('touchstart', startMusic, { once: true });
-                    });
-                }
-            }, 2000);
-        });
+        document.addEventListener('click', function playAudio() {
+            bgMusic.play().catch(e => console.log('Autoplay prevented'));
+            document.removeEventListener('click', playAudio);
+        }, { once: true });
 
-        // Toggle mute/unmute
         audioIcon.addEventListener('click', () => {
             if (isMuted) {
                 bgMusic.muted = false;
@@ -1159,13 +952,11 @@
             }
         });
 
-        // Volume slider control
         volumeSlider.addEventListener('input', (e) => {
             const volume = e.target.value;
             bgMusic.volume = volume / 100;
             volumePercentage.textContent = volume + '%';
             
-            // Update icon based on volume
             if (volume == 0) {
                 audioIcon.textContent = '🔇';
                 audioIcon.classList.add('muted');
@@ -1179,13 +970,11 @@
             }
         });
 
-        // Screenshot lightbox functionality
         let currentImageIndex = 0;
         const screenshots = document.querySelectorAll('.screenshot');
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightbox-img');
 
-        // Add click event to all screenshots
         screenshots.forEach((screenshot, index) => {
             screenshot.addEventListener('click', () => {
                 openLightbox(index);
@@ -1218,7 +1007,6 @@
             lightboxImg.src = `assets/screenshots/screenshot${screenshotNum}.png`;
         }
 
-        // Close lightbox with ESC key
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeLightbox();
@@ -1229,24 +1017,12 @@
             }
         });
 
-        // Close lightbox when clicking outside the image
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) {
                 closeLightbox();
             }
         });
 
-        // Remove loading screen
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                document.getElementById('loadingScreen').style.opacity = '0';
-                setTimeout(() => {
-                    document.getElementById('loadingScreen').style.display = 'none';
-                }, 500);
-            }, 2000);
-        });
-
-        // Animated background grid
         function createBackgroundGrid() {
             const bg = document.getElementById('bgAnimation');
             const spacing = 50;
@@ -1272,7 +1048,6 @@
 
         createBackgroundGrid();
 
-        // Stats counter animation
         function animateStats() {
             const stats = document.querySelectorAll('.stat-number');
             const observer = new IntersectionObserver((entries) => {
@@ -1299,66 +1074,13 @@
 
         animateStats();
 
-        // Smooth scroll
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Particle system
-        function createParticles() {
-            setInterval(() => {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * window.innerWidth + 'px';
-                particle.style.top = window.innerHeight + 'px';
-                document.body.appendChild(particle);
-                
-                setTimeout(() => particle.remove(), 3000);
-            }, 500);
-        }
-
-        createParticles();
-
-        // Konami code easter egg
-        let konamiCode = [];
-        const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        
-        document.addEventListener('keydown', (e) => {
-            konamiCode.push(e.key);
-            konamiCode = konamiCode.slice(-10);
-            
-            if (konamiCode.join(',') === konamiSequence.join(',')) {
-                document.body.style.animation = 'glitch 0.1s infinite';
-                setTimeout(() => {
-                    alert('🎮 CHEAT CODE ACTIVATED! GOD MODE ENABLED! 🎮');
-                    document.body.style.animation = '';
-                }, 1000);
-            }
-        });
-
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero');
-            parallaxElements.forEach(el => {
-                el.style.transform = `translateY(${scrolled * 0.5}px)`;
-            });
-        });
-
-        // Hide scroll indicator after scrolling
-        window.addEventListener('scroll', () => {
-            const indicator = document.querySelector('.scroll-indicator');
-            if (window.scrollY > 100) {
-                indicator.style.opacity = '0';
-            }
-        });
-
-        // Random glitch effect
         setInterval(() => {
             const h1 = document.querySelector('.hero h1');
             h1.classList.add('glitch');
             setTimeout(() => h1.classList.remove('glitch'), 300);
         }, 5000);
 
-        console.log('%c>> WELCOME TO WOBLOBLOBLO GAME STUDIOS <<', 'color: #00ff41; font-size: 20px; font-weight: bold;');
-        console.log('%cLooking for secrets? Try
+        console.log('%c>> WOBLOBLOBLO GAME STUDIOS <<', 'color: #00ff41; font-size: 20px; font-weight: bold;');
+    </script>
+</body>
+</html>
