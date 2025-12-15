@@ -281,6 +281,34 @@
             opacity: 1;
         }
 
+        /* Video Section */
+        .video-container {
+            margin: 60px auto;
+            max-width: 900px;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+            position: relative;
+            background: var(--dark);
+        }
+
+        .video-container::before {
+            content: '▶ GAMEPLAY TRAILER';
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: var(--accent);
+            text-shadow: 0 0 10px var(--accent);
+            font-weight: bold;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
         /* Lightbox Modal */
         .lightbox {
             display: none;
@@ -488,7 +516,7 @@
             margin: 50px 0;
         }
 
-        .newsletter input {
+        .newsletter input[type="email"] {
             padding: 15px 30px;
             font-size: 18px;
             background: transparent;
@@ -499,9 +527,13 @@
             min-width: 300px;
         }
 
-        .newsletter input:focus {
+        .newsletter input[type="email"]:focus {
             outline: none;
             box-shadow: 0 0 10px var(--primary);
+        }
+
+        .newsletter input[type="email"]::placeholder {
+            color: rgba(0, 255, 65, 0.5);
         }
 
         /* Footer */
@@ -681,7 +713,7 @@
             nav ul { flex-direction: column; gap: 20px; }
             .timeline-item { width: 100%; margin-left: 0 !important; }
             .timeline::before { left: 20px; }
-            .newsletter input { min-width: 100%; }
+            .newsletter input[type="email"] { min-width: 100%; }
             .lightbox-nav { width: 40px; height: 40px; font-size: 30px; }
             .lightbox-prev { left: 10px; }
             .lightbox-next { right: 10px; }
@@ -786,6 +818,7 @@
             <li><a href="#home">HOME</a></li>
             <li><a href="#game">THE GAME</a></li>
             <li><a href="#features">FEATURES</a></li>
+            <li><a href="#media">MEDIA</a></li>
             <li><a href="#roadmap">ROADMAP</a></li>
             <li><a href="#team">TEAM</a></li>
             <li><a href="#contact">CONTACT</a></li>
@@ -891,8 +924,8 @@
         </div>
     </section>
 
-    <!-- Screenshots -->
-    <section>
+    <!-- Media Section (Screenshots + Video) -->
+    <section id="media">
         <h2>SCREENSHOTS</h2>
         <div class="gallery" id="gallery">
             <div class="screenshot" data-screenshot="1" style="background-image: url('assets/screenshots/screenshot1.png')">
@@ -913,6 +946,14 @@
             <div class="screenshot" data-screenshot="6" style="background-image: url('assets/screenshots/screenshot6.png')">
                 <div class="screenshot-overlay">[CLICK TO VIEW]</div>
             </div>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-container">
+            <video controls preload="metadata">
+                <source src="assets/videos/gameplay.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </section>
 
@@ -996,9 +1037,33 @@
             <p style="font-size: 18px; margin-bottom: 30px;">
                 Zapisz się na newsletter i bądź na bieżąco z rozwojem gry!
             </p>
-            <input type="email" placeholder="your@email.com" id="emailInput">
-            <button class="cta-button" onclick="subscribe()">SUBSCRIBE</button>
-            <p id="subscribeMessage" style="margin-top: 20px; color: var(--accent);"></p>
+            
+            <!-- FormSubmit Form -->
+            <form action="https://formsubmit.co/woblogames@gmail.com" method="POST">
+                <!-- Honeypot for spam protection -->
+                <input type="text" name="_honey" style="display:none">
+                
+                <!-- Disable reCAPTCHA -->
+                <input type="hidden" name="_captcha" value="false">
+                
+                <!-- Custom thank you page (optional - change to your URL) -->
+                <input type="hidden" name="_next" value="https://yourdomain.com/thanks.html">
+                
+                <!-- Subject line -->
+                <input type="hidden" name="_subject" value="🎮 Nowa subskrypcja newsletter WOBLOBLOBLO!">
+                
+                <!-- Auto-response (optional) -->
+                <input type="hidden" name="_autoresponse" value="Dziękujemy za zapisanie się do newslettera WOBLOBLOBLO! Będziemy informować Cię o postępach w rozwoju gry.">
+                
+                <!-- Email template (optional) -->
+                <input type="hidden" name="_template" value="table">
+                
+                <!-- Main email input -->
+                <input type="email" name="email" placeholder="your@email.com" required>
+                
+                <!-- Submit button -->
+                <button type="submit" class="cta-button">SUBSCRIBE</button>
+            </form>
         </div>
     </section>
 
@@ -1239,21 +1304,6 @@
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Newsletter subscription
-        function subscribe() {
-            const email = document.getElementById('emailInput').value;
-            const message = document.getElementById('subscribeMessage');
-            
-            if (email.includes('@')) {
-                message.textContent = '✓ SUCCESSFULLY SUBSCRIBED! CHECK YOUR EMAIL.';
-                message.style.color = 'var(--primary)';
-                document.getElementById('emailInput').value = '';
-            } else {
-                message.textContent = '✗ INVALID EMAIL ADDRESS!';
-                message.style.color = 'var(--secondary)';
-            }
-        }
-
         // Particle system
         function createParticles() {
             setInterval(() => {
@@ -1316,4 +1366,3 @@
     </script>
 </body>
 </html>
-
