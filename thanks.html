@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dziękujemy! - WOBLOBLOBLO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff41;
+            --secondary: #ff0080;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --accent: #ffff00;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: var(--darker);
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            border: 3px solid var(--primary);
+            padding: 60px 40px;
+            background: rgba(0, 255, 65, 0.05);
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.3);
+        }
+
+        h1 {
+            font-size: 48px;
+            color: var(--accent);
+            text-shadow: 0 0 20px var(--accent);
+            margin-bottom: 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        p {
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: rgba(0, 255, 65, 0.8);
+        }
+
+        .icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            padding: 20px 50px;
+            font-size: 24px;
+            background: transparent;
+            color: var(--primary);
+            border: 3px solid var(--primary);
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 30px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--primary);
+            transition: left 0.3s;
+            z-index: -1;
+        }
+
+        .cta-button:hover {
+            color: var(--dark);
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .cta-button:hover::before {
+            left: 0;
+        }
+
+        /* Particle animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            50% { transform: translateY(-50px) translateX(25px); }
+        }
+
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
+            background: var(--primary);
+            pointer-events: none;
+            animation: float 3s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">✓</div>
+        <h1>DZIĘKUJEMY!</h1>
+        <p>
+            Twój email został zapisany do naszego newslettera!
+        </p>
+        <p>
+            Wkrótce otrzymasz wiadomość z potwierdzeniem oraz pierwszymi newsami o rozwoju WOBLOBLOBLO.
+        </p>
+        <p style="color: var(--accent); margin-top: 40px;">
+            >> STAY TUNED FOR EPIC UPDATES <<
+        </p>
+        <a href="index.html" class="cta-button">WRÓĆ DO STRONY</a>
+    </div>
+
+    <script>
+        // Create floating particles
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = Math.random() * 100 + '%';
+            particle.style.animationDelay = Math.random() * 3 + 's';
+            document.body.appendChild(particle);
+        }
+
+        // Auto redirect after 10 seconds
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 10000);
+
+        console.log('%c>> SUBSCRIPTION SUCCESSFUL! <<', 'color: #00ff41; font-size: 20px; font-weight: bold;');
+    </script>
+</body>
+</html>
