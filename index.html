@@ -820,15 +820,15 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">Q1 2026 - COMPLETED ✓</div>
+                    <div class="timeline-date">Q1 2026</div>
                     <h3>DEMO RELEASE</h3>
-                    <p>Core engine, podstawowe mechaniki, pierwszy epizod z 5 levelami</p>
+                    <p>DEMO - With 3 levels and limited access to Map Editor</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <div class="timeline-date">Q2 2026 - POLISHING & FULL VERSION PREPARATION</div>
-                    <h3>BETA RELEASE</h3>
+                    <div class="timeline-date">Q2 2026</div>
+                    <h3>POLISHING & FULL VERSION PREPARATION</h3>
                     <p>Game balancing, performance optimization, bug fixing, and full version development based heavily on player feedback.</p>
                 </div>
             </div>
@@ -883,16 +883,59 @@
 </section>
 
     <section id="contact">
-        <h2>GET IN TOUCH</h2>
-        <div style="text-align: center;">
-            <p style="font-size: 20px; margin-bottom: 30px; color: rgba(0,255,65,0.8);">
-                Want to share your feedback? Got any questions? Want to collaborate? Get in touch!
-            </p>
-            <p style="font-size: 24px; color: var(--accent);">
-                WOBLOGAMES@GMAIL.COM
-            </p>
-        </div>
-    </section>
+    <h2>WRITE TO WOBLO GAMES</h2>
+
+    <div class="newsletter" style="max-width: 700px; margin: 0 auto;">
+        <p style="font-size: 18px; margin-bottom: 30px; color: rgba(0,255,65,0.8);">
+            Got feedback, bug reports, ideas or business inquiries?  
+            Send a message directly to the developer.
+        </p>
+
+        <form action="https://formsubmit.co/woblogames@gmail.com" method="POST">
+
+            <!-- Anty-bot honeypot -->
+            <input type="text" name="_honey" style="display:none">
+
+            <!-- Lekka captcha -->
+            <input type="hidden" name="_captcha" value="true">
+
+            <!-- Temat maila -->
+            <input type="hidden" name="_subject" value="Message from WOBLO website">
+
+            <!-- Nick -->
+            <input type="text" name="nickname" placeholder="Your nickname" required>
+
+            <!-- Email (opcjonalny, jeśli chcesz odpisać) -->
+            <input type="email" name="email" placeholder="Your email (optional)">
+
+            <!-- Wiadomość -->
+            <textarea name="message" placeholder="Your message..." required
+                style="
+                    width: 100%;
+                    min-height: 150px;
+                    padding: 15px;
+                    font-size: 16px;
+                    background: transparent;
+                    border: 2px solid var(--primary);
+                    color: var(--primary);
+                    font-family: 'Courier New', monospace;
+                    margin: 20px 0;
+                    resize: vertical;
+                "></textarea>
+
+            <!-- Minimalna zgoda -->
+            <div style="margin: 15px 0; font-size: 13px; color: rgba(0,255,65,0.6); text-align: left;">
+                <label style="cursor: pointer;">
+                    <input type="checkbox" required style="margin-right: 8px;">
+                    I agree that my data will be used only to respond to this message.
+                </label>
+            </div>
+
+            <button type="submit" class="cta-button">SEND MESSAGE</button>
+        </form>
+    </div>
+</section>
+
 
     <footer>
         <h3 style="font-size: 36px; margin-bottom: 20px;">WOBLOBLOBLO GAME STUDIOS</h3>
@@ -1068,4 +1111,5 @@
     </script>
 </body>
 </html>
+
 
